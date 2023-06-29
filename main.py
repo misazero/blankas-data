@@ -1,5 +1,9 @@
 import json
+from pathlib import Path
 
+from tqdm import tqdm
+
+from src.book import Book
 from src.function import browsing
 
 
@@ -31,5 +35,32 @@ def save_all_books():
     json.dump(books, open("bookdata/algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
+def scrap_all_books():
+    error_data = []
+    books_data = {}
+    data = json.load(open("bookdata/algolia_books.json", encoding="utf8"))
+    for algolia_book in tqdm(data):
+        slug = algolia_book["slug"]
+        try:
+            book = Book.from_slug(slug)
+        except:
+            error_data.append(algolia_book)
+            continue
+        book_serialize = book.serialize()
+        book_data = algolia_book.copy()
+        book_data["meta"] = book_serialize
+        book_id = book.id
+        books_data[book_id] = book_data
+        language = book_data["language"]
+        book_dir = Path(f"bookdata/{language}/{book_id}")
+        book_dir.mkdir(parents=True, exist_ok=True)
+        for chapter in book.chapters:
+            chapter.download_audio(target_dir=book_dir)
+
+    json.dump(books_data, open("bookdata/books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(error_data, open("bookdata/error_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+
+
 if __name__ == "__main__":
-    save_all_books()
+    # save_all_books()
+    scrap_all_books()
