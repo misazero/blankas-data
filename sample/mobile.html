@@ -6,16 +6,16 @@
   <title>Document</title>
   <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 <body>
   <div class="reader page">
     <div class="flex flex-col h-screen h-available">
       <div class="contents">
-        <div class="mobile-menu-button flex justify-end w-full py-4 px-6 bg-white">
+        <div isopen="0" class="mobile-menu-button flex justify-end w-full py-4 px-6 bg-white">
           <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-open-icon-54bb6c645fbf331e0098.svg">
-          <!-- <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-close-icon-976c28e771611d875890.svg"> -->
         </div>
-        <div class="fixed top-12 bottom-0 left-0 right-0 z-10 bg-white" style="display: none;">
+        <div id="menu-content" class="fixed top-12 bottom-0 left-0 right-0 z-10 bg-white" style="display: none;">
           <div class="flex flex-col h-full overflow-auto justify-between">
             <div>
               <div>
@@ -153,7 +153,7 @@
                   <div class="line-divider__line line-divider__line--m line-divider__line--lightest-grey"></div>
                 </div>
                 <a class="flex flex-col group m:pb-4 pr-6 m:pr-4 mt-12 m:mt-0">
-                  <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                  <div id="text-size" class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
                     <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
                     <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
                       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,28 +165,24 @@
                       <span class="flex-grow">
                         Text size
                       </span> 
-                      <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
-                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                      </svg> -->
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="z-index: -1;">
+                      <svg id="text-size-toggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
                         <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
                       </svg>
                     </div>
                   </div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0" style="display: none;"><!----></div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-100" style="">
-                    <div class="flex flex-row font-medium ml-6 mb-4">
-                      <button type="button" data-test-active="true" class="w-10 h-8 text-dark-grey cursor-pointer
+                  <div id="text-size-content" class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0">
+                    <div id="text-size-content-menu" class="flex flex-row font-medium ml-6 mb-4" style="display: none;">
+                      <button id="text-size-s" type="button" data-test-active="true" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-green hover:border-green rounded-sm mr-4 last:mr-0 text-r2">
                         aA
                       </button>
-                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                      <button id="text-size-m" type="button" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r1">
                         aA
                       </button>
-                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                      <button id="text-size-l" type="button" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r0">
                         aA
@@ -387,5 +383,6 @@
       </div>
     </div>
   </div>
+  <script src="mobile.js"></script>
 </body>
 </html>
