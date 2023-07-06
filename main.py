@@ -37,16 +37,26 @@ def save_all_books():
 
 def scrap_all_books():
     error_data = []
+    cloudflare_error_data = []
     books_data = {}
     data = json.load(open("bookdata/algolia_books.json", encoding="utf8"))
+    start_index = 0
+    count_index = 0
     for algolia_book in tqdm(data):
+        count_index += 1
+        if count_index < start_index:
+            continue
         slug = algolia_book["slug"]
         try:
             book = Book.from_slug(slug)
         except:
             error_data.append(algolia_book)
             continue
-        book_serialize = book.serialize()
+        try:
+            book_serialize = book.serialize()
+        except:
+            cloudflare_error_data.append(algolia_book)
+            continue
         book_data = algolia_book.copy()
         book_data["meta"] = book_serialize
         book_id = book.id
@@ -59,6 +69,7 @@ def scrap_all_books():
 
     json.dump(books_data, open("bookdata/books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
     json.dump(error_data, open("bookdata/error_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(cloudflare_error_data, open("bookdata/cloudflare_error_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":

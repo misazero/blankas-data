@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, height=844, initial-scale=1.0 ser-scalable=0">
+  <title>Document</title>
+  <link rel="stylesheet" href="mobile.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="reader page">
+    <div class="flex flex-col h-screen h-available">
+      <div class="contents">
+        <div class="mobile-menu-button flex justify-end w-full py-4 px-6 bg-white">
+          <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-open-icon-54bb6c645fbf331e0098.svg">
+          <!-- <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-close-icon-976c28e771611d875890.svg"> -->
+        </div>
+        <div class="fixed top-12 bottom-0 left-0 right-0 z-10 bg-white" style="display: none;">
+          <div class="flex flex-col h-full overflow-auto justify-between">
+            <div>
+              <div>
+                <a class="flex flex-col group m:pb-4 pr-6 m:pr-4 mt-5 m:mt-0">
+                  <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                    <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
+                    <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1714_554)">
+                          <path d="M12.6 3.80002C11.3 3.70002 10.1 3.90002 8.9 4.40002C7.8 4.90002 6.8 5.70002 6 6.70002C5.2 7.70002 4.8 8.90002 4.6 10.1C4.4 11.3 4.5 12.6 4.9 13.8C5.3 15 6 16 6.9 16.9V18.3V21.6H8.9C9 22.2 9.4 22.7 9.8 23.2C10.4 23.8 11.2 24.1 12 24.1C12.8 24.1 13.6 23.8 14.2 23.2C14.7 22.8 15 22.2 15.1 21.6H17.4V18.3V16.8C18.1 16.1 18.6 15.3 19 14.4C19.4 13.4 19.6 12.4 19.6 11.3C19.6 9.40002 18.9 7.60002 17.6 6.20002C16.3 4.80002 14.5 3.90002 12.6 3.80002ZM13.2 22C12.9 22.3 12.5 22.5 12 22.5C11.6 22.5 11.1 22.3 10.8 22C10.7 21.9 10.5 21.7 10.5 21.5H13.5C13.4 21.7 13.3 21.9 13.2 22ZM15.9 20.1H8.4V18.8H15.9V20.1ZM18.1 11.3C18.1 12.2 17.9 13 17.6 13.8C17.3 14.6 16.8 15.3 16.1 15.9L15.8 16.2L15.9 16.6V17.2H8.4V16.2L8 15.8C7.3 15.1 6.7 14.3 6.4 13.3C6.1 12.3 6 11.3 6.1 10.3C6.2 9.30002 6.6 8.40002 7.2 7.60002C7.8 6.80002 8.6 6.20002 9.6 5.80002C10.5 5.40002 11.5 5.20002 12.5 5.30002C14 5.40002 15.4 6.10002 16.5 7.20002C17.5 8.30002 18.1 9.80002 18.1 11.3Z" fill="currentColor"></path>
+                          <path d="M12.5 0H11V2.6H12.5V0Z" fill="currentColor"></path>
+                          <path d="M4.97796 1.68091L3.91446 2.73871L5.74798 4.58211L6.81148 3.52431L4.97796 1.68091Z" fill="currentColor"></path>
+                          <path d="M19.022 1.68846L17.1884 3.53186L18.2519 4.58966L20.0855 2.74626L19.022 1.68846Z" fill="currentColor"></path>
+                          <path d="M13.7 9.90001C13.7 8.90001 12.9 8.20001 12 8.20001C11.1 8.20001 10.3 9.00001 10.3 9.90001C10.3 10.4 10.5 10.9 10.9 11.2L10.1 13.9H13.9L13.2 11.2C13.5 10.8 13.7 10.4 13.7 9.90001Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1714_554">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div class="flex flex-row items-center w-full font-medium delay-100 transition-opacity ease-in-out duration-500 text-h5 font-cera-pro opacity-100"><span class="flex-grow">
+                        Key ideas
+                      </span> 
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
+                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                      </svg>
+                      <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="z-index: -1;">
+                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                      </svg> -->
+                    </div>
+                  </div>
+                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0" style=""></div>
+                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-100" style="display: none;">
+                    <div class="relative m:fixed m:top-0 m:bg-black/50 m:w-full m:h-full">
+                      <div class="m:overflow-auto m:max-h-full">
+                        <div class="hidden m:block m:absolute m:top-36 m:bg-gradient-to-b m:from-pale-mint-grey m:to-transparent m:h-8 m:left-0 m:right-0"></div>
+                        <div class="m:my-6">
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Introduction
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                                1
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Economics studies the use of scarce resources that have alternative uses
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                                2
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Investing is all about making sacrifices today to create a more abundant tomorrow
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                                3
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Financial institutions harness the well-being of individuals to the fortunes of economies
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                                4
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Insurance companies transfer and reduce risk
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
+                            <div class="font-bold mx-6 w-4 flex-shrink-0">
+                              <div class="headline font-bold font-cera-pro text-h35 ">
+                              </div>
+                            </div>
+                            <div class="text-sm flex-grow mr-2">
+                              Final summary
+                            </div>
+                            <div class="ml-5 m:mx-8">
+                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
+                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="hidden m:block m:absolute m:bottom-0 m:bg-gradient-to-b m:from-transparent m:to-pale-mint-grey m:h-8 m:left-0 m:right-0"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </a>
+                <div class="line-divider  m:hidden">
+                  <div class="line-divider__line line-divider__line--m line-divider__line--lightest-grey"></div>
+                </div>
+                <a class="flex flex-col group m:pb-4 pr-6 m:pr-4 mt-12 m:mt-0">
+                  <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                    <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
+                    <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.2 16.9H3.1L1.8 19.9H0L6.3 5H7L13.3 19.9H11.5L10.2 16.9ZM6.7 8.2L3.8 15.4H9.7L6.7 8.2Z" fill="currentColor"></path>
+                        <path d="M24 13.2V19.9H22.4V18.5C21.6 19.5 20.4 20.1 18.8 20.1C16.6 20.1 15 18.9 15 17.1C15 15.3 16.5 14.1 18.9 14.1H22.3V13.1C22.3 11.3 21.3 10.4 19.7 10.4C18.3 10.4 17.4 11 16.6 12.1L15.5 11.2C16.5 9.60005 18.2 8.80005 19.9 8.80005C22.2 8.80005 24 10.3 24 13.2ZM22.3 15.7V15.4H19.1C17.6 15.4 16.8 15.9 16.8 16.9C16.8 18.1 17.8 18.6 19 18.6C20.8 18.7 22.3 17.4 22.3 15.7Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                    <div class="flex flex-row items-center w-full font-medium delay-100 transition-opacity ease-in-out duration-500 text-h5 font-cera-pro opacity-100">
+                      <span class="flex-grow">
+                        Text size
+                      </span> 
+                      <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
+                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                      </svg> -->
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="z-index: -1;">
+                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0" style="display: none;"><!----></div>
+                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-100" style="">
+                    <div class="flex flex-row font-medium ml-6 mb-4">
+                      <button type="button" data-test-active="true" class="w-10 h-8 text-dark-grey cursor-pointer
+                    flex justify-center items-center font-tisa-pro
+                    border-2 border-solid border-green hover:border-green rounded-sm mr-4 last:mr-0 text-r2">
+                        aA
+                      </button>
+                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                    flex justify-center items-center font-tisa-pro
+                    border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r1">
+                        aA
+                      </button>
+                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                    flex justify-center items-center font-tisa-pro
+                    border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r0">
+                        aA
+                      </button>
+                    </div>
+                  </div>
+                </a>
+                <div class="line-divider  m:hidden">
+                  <div class="line-divider__line line-divider__line--m line-divider__line--lightest-grey"></div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-10">
+              <a href="/en/app/explore" class="flex flex-col group m:pb-4 pr-6 m:pr-4">
+                <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                  <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
+                  <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0326 3.75C6.34246 3.75 3.35498 6.73153 3.35498 10.4045C3.35498 14.0775 6.34246 17.059 10.0326 17.059C13.7228 17.059 16.7103 14.0775 16.7103 10.4045C16.7103 6.73153 13.7228 3.75 10.0326 3.75ZM1.85498 10.4045C1.85498 5.89869 5.51845 2.25 10.0326 2.25C14.5468 2.25 18.2103 5.89869 18.2103 10.4045C18.2103 12.3887 17.4998 14.2067 16.3192 15.6201L22.1026 21.4443L21.0382 22.5012L15.2564 16.6787C13.8393 17.853 12.0183 18.559 10.0326 18.559C5.51845 18.559 1.85498 14.9103 1.85498 10.4045Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-row items-center w-full font-medium delay-100 transition-opacity ease-in-out duration-500 text-h5 font-cera-pro opacity-100">
+                    <span class="flex-grow">
+                      Explore
+                    </span> <!---->
+                  </div>
+                </div>
+                <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0"><!----></div>
+              </a>
+              <a href="/en/app/library" class="flex flex-col group m:pb-4 pr-6 m:pr-4">
+                <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                  <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
+                  <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 0.25H20.75V23.7113L12.0333 15.6767L3.25 23.7011V0.25ZM4.75 1.75V20.2989L12.0378 13.6408L19.25 20.2887V1.75H4.75Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-row items-center w-full font-medium delay-100 transition-opacity ease-in-out duration-500 text-h5 font-cera-pro opacity-100">
+                    <span class="flex-grow">
+                      My Library
+                    </span> <!---->
+                  </div>
+                </div>
+                <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0"><!----></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col m:flex-row-reverse relative flex-grow overflow-y-scroll pt-5 m:pt-0">
+        <div class="transition-opacity reader-content relative my-3 m:my-16 duration-300">
+          <div>
+            <h5 class="text-mid-grey">Key idea 1</h5>
+            <h2 class="reader-content__headline mt-4 m:mt-0 m:mb-8">Economics studies the use of scarce resources that have alternative uses</h2>
+      
+            <div class="flex flex-col">
+              <span class="reader-content__text font-tisa-pro text-r2">
+                <p>The basic principles of economics are universal. They operate in feudal,
+                  socialist,
+                  and capitalist societies,
+                  and they apply to all peoples,
+                  cultures,
+                  and governments.&nbsp;
+                </p>
+                <p>These principles are unchanging. Policies that caused the price of grain to rise in ancient Rome will have the same impact if you implement them in today’s India or European Union.&nbsp;
+                  &nbsp;
+                </p>
+                <p>Before we get into (some of) these principles,
+                  we need to begin by defining our terms. First off: what is an economy,
+                  anyway? One answer goes something like this: an economy is a system for producing and distributing the goods and services we require in everyday life.&nbsp;
+                </p>
+                <p>That’s a good start –&nbsp;
+                  but there’s something missing. Per this definition,
+                  the Garden of Eden,
+                  which,
+                  among other things,
+                  was a system for distributing goods and services,
+                  was an economy. But few economists would classify it that way because those goods and services were <em>abundantly available</em>: there was as much of everything as anyone desired. Without <em>scarcity</em>,
+                  there’s no need to economize – and thus no economics. Put differently,
+                  economics studies the choices societies make about the <em>use of scarce resources that have alternative uses</em>.&nbsp;
+                </p>
+                <p>Let’s break that down. <em>Scarcity </em>means that there isn’t enough of everything to satisfy everyone’s needs completely. What people want adds up to more than there is. In short,
+                  some needs will go unmet. The impossibility of satisfying all wants and desires is a constant in human history. At this level,
+                  feudal,
+                  socialist,
+                  and capitalist societies are just different institutional ways of thinking about the trade-offs that must be made due to scarcity.</p>
+                <p>That brings us to <em>production</em>. Economics doesn’t just deal with existing goods and services –&nbsp;
+                  it’s also more fundamentally about producing new <em>output </em>from scarce resources,
+                  or <em>inputs</em>.</p>
+                <p>As we’ve said,
+                  scarce resources have <em>alternative uses</em>. Water can be used to produce ice or steam,
+                  but it can also be used to cool power plants or dye jeans. If you have petroleum,
+                  you can produce gasoline and heating oil –&nbsp;
+                  or you can make plastics or asphalt or Vaseline. You can turn iron ore into paper clips,
+                  automobile parts,
+                  or the frameworks for skyscrapers.&nbsp;
+                </p>
+                <p>Every economy,
+                  then,
+                  has to decide how much of each resource to use for which purpose. These decisions – rather than the existence of natural resources – ultimately determine a country’s standard of living. There are,
+                  after all,
+                  resource-rich countries with relatively low standards of living,
+                  and resource-poor countries with high standards of living. The value of natural resources per capita in Uruguay,
+                  for example,
+                  is several times higher than in Japan,
+                  but real income per capita in Japan is more than double that of Uruguay.&nbsp;
+                  &nbsp;
+                </p>
+                <p>The difference-maker here is <em>efficiency in production </em>– that is,
+                  the rate at which inputs are turned into output. Efficient economies maximize output by minimizing waste and getting the most out of scarce resources;
+                  inefficient economies don’t. If you want to visualize this process,
+                  it helps to think about real things – the iron ore,
+                  wood,
+                  and petroleum that go into the production process rather than the cars,
+                  furniture,
+                  and gasoline that come out at the other end. Although economics is often conflated with money,
+                  currencies and cash are secondary. Money is an artificial device to get real things done. It’s the volume of goods and services,
+                  as well as the efficiency of their production,
+                  that determine how rich or poor a country is.&nbsp;
+                  &nbsp;
+                  &nbsp;
+                </p>
+              </span>
+              <footer class="reader-content__footer mt-8 m:mb-36">
+                <button class="reader-content__previous m:mb-12" style=""></button>
+                <button class="reader-content__next m:mb-12"></button>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reader-audio z-20" >
+        <div class="reader-audio__container">
+          <div class="reader-audio-player-mobile reader-audio__player" >
+            <div class="reader-audio-player-mobile__chapter-wrapper">
+              <div class="reader-chapter-mobile reader-audio__chapter">
+                <div class="reader-chapter-mobile__book-cover-wrapper">
+                  <div class="relative reader-chapter-mobile__book-cover">
+                    <picture class="pict book-cover__picture pict--whitespace-fix">
+                      <source  media="(max-width: 415px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/640.jpg 2x">
+                      <source  media="(max-width: 767px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/1080.jpg 2x">
+                      <source  media="(max-width: 1023px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/470.jpg 2x"> 
+                      <img  src="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/470.jpg" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/640.jpg 2x" alt="Basic Economics" loading="lazy" class="pict__image book-cover__image">
+                    </picture>
+                  </div>
+                </div>
+                <div class="reader-chapter-mobile__book-info">
+                  <span class="reader-chapter-mobile__status">Continue listening</span>
+                  <div class="reader-chapter-mobile__counter">
+                    <span class="reader-chapter-mobile__chapter">Introduction </span> 
+                    <span class="reader-chapter-mobile__title">Basic Economics</span>
+                  </div>
+                </div>
+              </div> 
+              <button class="reader-audio-player-mobile__button">
+                <!-- <div class="reader-audio-player-mobile__arrow"></div> -->
+                <div class="reader-audio-player-mobile__play"> </div>
+              </button>
+            </div>
+            <div class="reader-audio-player-mobile__audio-wrapper" style="">
+              <div class="audio-progress reader-audio-player-mobile__progress">
+                <div class="audio-progress__element audio-progress__element--time">
+                  <div class="audio-progress__remaining-time">0:00 </div>
+                </div>
+                <div class="audio-progress__element audio-progress__element--progress">
+                  <div class="dark-ranger dark-ranger--dark dark-ranger--rounded audio-progress__progress">
+                    <div class="dark-ranger__path cursor-pointer">
+                      <div class="dark-ranger__trail cursor-pointer" style="width: 0px;"></div>
+                      <div class="p-4">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="dark-ranger__thumb w-3 h-3 -ml-1" style="left: 0px;">
+                          <path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" fill="white"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="audio-progress__element audio-progress__element--total">
+                  <div class="audio-progress__total-time">1:39 </div>
+                </div>
+              </div>
+              <div class="audio-controls reader-audio-player-mobile__controls">
+                <div class="audio-speed">
+                  <div class="audio-speed-clicker__item">
+                    <span>1.0× </span>
+                  </div>
+                </div>
+                <div class="audio-controls__wrapper">
+                  <button class="audio-controls__previous"></button>
+                  <button class="audio-controls__back"></button>
+                  <button class="audio-controls__play"></button>
+                  <button class="audio-controls__forward"></button>
+                  <button class="audio-controls__next"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
