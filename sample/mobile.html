@@ -2,25 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=390, height=844, initial-scale=1.0 ser-scalable=0">
-  <title>Document</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- Content descriptions -->
+  <meta http-equiv="language" content="en">
+  <meta http-equiv="content-language" content="en">
+
+  <!-- Device configuration-->
+  <!-- <meta name="viewport" content="width=390, height=844, initial-scale=1.0 ser-scalable=0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" href="https://www.blinkist.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="https://www.blinkist.com/apple-touch-icon-precomposed.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="/apple-touch-icon.png">
+  <link rel="icon" href="https://www.blinkist.com/favicon.png" sizes="32x32">
+
+  <!-- SEO optimization -->
+
+  <title>Blankas: Serving curious minds.</title>
+  <meta name="description" content="Blankas offers summaries of great nonfiction books’ key insights in a made for mobile format. Learn something new every day - on your smartphone, tablet or PC.">
+  <meta name="keywords" content="knowledge,books">
+  <meta property="og:title" content="Blankas: Serving curious minds.">
+  <meta property="og:site_name" content="Blankas">
+  <meta property="og:description" content="Blankas offers summaries of great nonfiction books’ key insights in a made for mobile format. Learn something new every day - on your smartphone, tablet or PC.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://static.blinkist.com/og/default_sharing_image_en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 <body>
   <div class="reader page">
     <div class="flex flex-col h-screen h-available">
       <div class="contents">
-        <div class="mobile-menu-button flex justify-end w-full py-4 px-6 bg-white">
+        <div isopen="0" class="mobile-menu-button flex justify-end w-full py-4 px-6 bg-white">
           <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-open-icon-54bb6c645fbf331e0098.svg">
-          <!-- <img src="https://www.blinkist.com/packs/static/dark-reader/components/mobile-menu-bar/images/mobile-menu-close-icon-976c28e771611d875890.svg"> -->
         </div>
-        <div class="fixed top-12 bottom-0 left-0 right-0 z-10 bg-white" style="display: none;">
+        <div id="menu-content" class="fixed top-12 bottom-0 left-0 right-0 z-10 bg-white" style="display: none;">
           <div class="flex flex-col h-full overflow-auto justify-between">
             <div>
               <div>
                 <a class="flex flex-col group m:pb-4 pr-6 m:pr-4 mt-5 m:mt-0">
-                  <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                  <div id="key-idea" class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
                     <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
                     <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_1714_554)">
@@ -40,108 +71,17 @@
                     <div class="flex flex-row items-center w-full font-medium delay-100 transition-opacity ease-in-out duration-500 text-h5 font-cera-pro opacity-100"><span class="flex-grow">
                         Key ideas
                       </span> 
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
+                      <svg id="key-idea-toggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
                         <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
                       </svg>
-                      <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="z-index: -1;">
-                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                      </svg> -->
                     </div>
                   </div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0" style=""></div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-100" style="display: none;">
-                    <div class="relative m:fixed m:top-0 m:bg-black/50 m:w-full m:h-full">
+                  <div id="key-idea-content" class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0">
+                    <div id="key-idea-content-menu" class="flex flex-row font-medium ml-6 mb-4" style="display: none;">
                       <div class="m:overflow-auto m:max-h-full">
                         <div class="hidden m:block m:absolute m:top-36 m:bg-gradient-to-b m:from-pale-mint-grey m:to-transparent m:h-8 m:left-0 m:right-0"></div>
-                        <div class="m:my-6">
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Introduction
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                                1
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Economics studies the use of scarce resources that have alternative uses
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                                2
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Investing is all about making sacrifices today to create a more abundant tomorrow
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                                3
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Financial institutions harness the well-being of individuals to the fortunes of economies
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                                4
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Insurance companies transfer and reduce risk
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="flex pl-2 m:pl-0 py-4 w-full items-center text-midnight hover:text-blue hover:bg-white cursor-pointer text-blue bg-white">
-                            <div class="font-bold mx-6 w-4 flex-shrink-0">
-                              <div class="headline font-bold font-cera-pro text-h35 ">
-                              </div>
-                            </div>
-                            <div class="text-sm flex-grow mr-2">
-                              Final summary
-                            </div>
-                            <div class="ml-5 m:mx-8">
-                              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6  ml-auto transform rotate-90">
-                                <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                              </svg>
-                            </div>
-                          </div>
+                        <div id="key-idea-content-data" class="m:my-6">
+                          <!---->
                         </div>
                         <div class="hidden m:block m:absolute m:bottom-0 m:bg-gradient-to-b m:from-transparent m:to-pale-mint-grey m:h-8 m:left-0 m:right-0"></div>
                       </div>
@@ -153,7 +93,7 @@
                   <div class="line-divider__line line-divider__line--m line-divider__line--lightest-grey"></div>
                 </div>
                 <a class="flex flex-col group m:pb-4 pr-6 m:pr-4 mt-12 m:mt-0">
-                  <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
+                  <div id="text-size" class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
                     <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
                     <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
                       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,28 +105,24 @@
                       <span class="flex-grow">
                         Text size
                       </span> 
-                      <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
-                        <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
-                      </svg> -->
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" style="z-index: -1;">
+                      <svg id="text-size-toggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform rotate-180" style="z-index: -1;">
                         <path d="M12.4545 11.1124L17.1459 15.7437C17.4921 16.0854 18.0533 16.0854 18.3994 15.7437C18.7456 15.402 18.7456 14.848 18.3994 14.5063L13.0813 9.25628C12.7351 8.91457 12.1739 8.91457 11.8278 9.25628L6.50958 14.5063C6.16343 14.848 6.16343 15.402 6.50958 15.7437C6.85572 16.0854 7.41694 16.0854 7.76308 15.7437L12.4545 11.1124Z" fill="currentColor"></path>
                       </svg>
                     </div>
                   </div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0" style="display: none;"><!----></div>
-                  <div class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-100" style="">
-                    <div class="flex flex-row font-medium ml-6 mb-4">
-                      <button type="button" data-test-active="true" class="w-10 h-8 text-dark-grey cursor-pointer
+                  <div id="text-size-content" class="flex mt-6 m:mt-2 transition duration-300 ease-in-out opacity-0">
+                    <div id="text-size-content-menu" class="flex flex-row font-medium ml-6 mb-4" style="display: none;">
+                      <button id="text-size-s" type="button" data-test-active="true" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-green hover:border-green rounded-sm mr-4 last:mr-0 text-r2">
                         aA
                       </button>
-                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                      <button id="text-size-m" type="button" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r1">
                         aA
                       </button>
-                      <button type="button" class="w-10 h-8 text-dark-grey cursor-pointer
+                      <button id="text-size-l" type="button" class="w-10 h-8 text-dark-grey cursor-pointer
                     flex justify-center items-center font-tisa-pro
                     border-2 border-solid border-light-grey hover:border-green rounded-sm mr-4 last:mr-0 text-r0">
                         aA
@@ -200,7 +136,7 @@
               </div>
             </div>
             <div class="pt-10">
-              <a href="/en/app/explore" class="flex flex-col group m:pb-4 pr-6 m:pr-4">
+              <a href="#" class="flex flex-col group m:pb-4 pr-6 m:pr-4">
                 <div class="flex flex-row items-center w-full h-10 cursor-pointer text-midnight hover:text-blue">
                   <div class="w-2 h-10 rounded bg-transparent group-hover:bg-green"></div>
                   <div class="flex flex-shrink-0 w-6 h-6 mr-4 ml-6">
@@ -239,76 +175,11 @@
       <div class="flex flex-col m:flex-row-reverse relative flex-grow overflow-y-scroll pt-5 m:pt-0">
         <div class="transition-opacity reader-content relative my-3 m:my-16 duration-300">
           <div>
-            <h5 class="text-mid-grey">Key idea 1</h5>
-            <h2 class="reader-content__headline mt-4 m:mt-0 m:mb-8">Economics studies the use of scarce resources that have alternative uses</h2>
-      
+            <h5 id="chapter-headline-slug" class="text-mid-grey"><!----></h5>
+            <h2 class="reader-content__headline mt-4 m:mt-0 m:mb-8"><!----></h2>
             <div class="flex flex-col">
               <span class="reader-content__text font-tisa-pro text-r2">
-                <p>The basic principles of economics are universal. They operate in feudal,
-                  socialist,
-                  and capitalist societies,
-                  and they apply to all peoples,
-                  cultures,
-                  and governments.&nbsp;
-                </p>
-                <p>These principles are unchanging. Policies that caused the price of grain to rise in ancient Rome will have the same impact if you implement them in today’s India or European Union.&nbsp;
-                  &nbsp;
-                </p>
-                <p>Before we get into (some of) these principles,
-                  we need to begin by defining our terms. First off: what is an economy,
-                  anyway? One answer goes something like this: an economy is a system for producing and distributing the goods and services we require in everyday life.&nbsp;
-                </p>
-                <p>That’s a good start –&nbsp;
-                  but there’s something missing. Per this definition,
-                  the Garden of Eden,
-                  which,
-                  among other things,
-                  was a system for distributing goods and services,
-                  was an economy. But few economists would classify it that way because those goods and services were <em>abundantly available</em>: there was as much of everything as anyone desired. Without <em>scarcity</em>,
-                  there’s no need to economize – and thus no economics. Put differently,
-                  economics studies the choices societies make about the <em>use of scarce resources that have alternative uses</em>.&nbsp;
-                </p>
-                <p>Let’s break that down. <em>Scarcity </em>means that there isn’t enough of everything to satisfy everyone’s needs completely. What people want adds up to more than there is. In short,
-                  some needs will go unmet. The impossibility of satisfying all wants and desires is a constant in human history. At this level,
-                  feudal,
-                  socialist,
-                  and capitalist societies are just different institutional ways of thinking about the trade-offs that must be made due to scarcity.</p>
-                <p>That brings us to <em>production</em>. Economics doesn’t just deal with existing goods and services –&nbsp;
-                  it’s also more fundamentally about producing new <em>output </em>from scarce resources,
-                  or <em>inputs</em>.</p>
-                <p>As we’ve said,
-                  scarce resources have <em>alternative uses</em>. Water can be used to produce ice or steam,
-                  but it can also be used to cool power plants or dye jeans. If you have petroleum,
-                  you can produce gasoline and heating oil –&nbsp;
-                  or you can make plastics or asphalt or Vaseline. You can turn iron ore into paper clips,
-                  automobile parts,
-                  or the frameworks for skyscrapers.&nbsp;
-                </p>
-                <p>Every economy,
-                  then,
-                  has to decide how much of each resource to use for which purpose. These decisions – rather than the existence of natural resources – ultimately determine a country’s standard of living. There are,
-                  after all,
-                  resource-rich countries with relatively low standards of living,
-                  and resource-poor countries with high standards of living. The value of natural resources per capita in Uruguay,
-                  for example,
-                  is several times higher than in Japan,
-                  but real income per capita in Japan is more than double that of Uruguay.&nbsp;
-                  &nbsp;
-                </p>
-                <p>The difference-maker here is <em>efficiency in production </em>– that is,
-                  the rate at which inputs are turned into output. Efficient economies maximize output by minimizing waste and getting the most out of scarce resources;
-                  inefficient economies don’t. If you want to visualize this process,
-                  it helps to think about real things – the iron ore,
-                  wood,
-                  and petroleum that go into the production process rather than the cars,
-                  furniture,
-                  and gasoline that come out at the other end. Although economics is often conflated with money,
-                  currencies and cash are secondary. Money is an artificial device to get real things done. It’s the volume of goods and services,
-                  as well as the efficiency of their production,
-                  that determine how rich or poor a country is.&nbsp;
-                  &nbsp;
-                  &nbsp;
-                </p>
+                <!---->
               </span>
               <footer class="reader-content__footer mt-8 m:mb-36">
                 <button class="reader-content__previous m:mb-12" style=""></button>
@@ -326,27 +197,26 @@
                 <div class="reader-chapter-mobile__book-cover-wrapper">
                   <div class="relative reader-chapter-mobile__book-cover">
                     <picture class="pict book-cover__picture pict--whitespace-fix">
-                      <source  media="(max-width: 415px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/640.jpg 2x">
-                      <source  media="(max-width: 767px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/1080.jpg 2x">
-                      <source  media="(max-width: 1023px)" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/470.jpg 2x"> 
-                      <img  src="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/470.jpg" srcset="https://images.blinkist.io/images/books/6486ec9ce38caf00088a55a6/1_1/640.jpg 2x" alt="Basic Economics" loading="lazy" class="pict__image book-cover__image">
+                      <source id="pict-m" media="(max-width: 415px)" srcset="">
+                      <source id="pict-s" media="(max-width: 767px)" srcset="">
+                      <source id="pict-xs" media="(max-width: 1023px)" srcset=""> 
+                      <img id="pict-default" src="" srcset="" alt="" loading="lazy" class="pict__image book-cover__image">
                     </picture>
                   </div>
                 </div>
                 <div class="reader-chapter-mobile__book-info">
                   <span class="reader-chapter-mobile__status">Continue listening</span>
                   <div class="reader-chapter-mobile__counter">
-                    <span class="reader-chapter-mobile__chapter">Introduction </span> 
-                    <span class="reader-chapter-mobile__title">Basic Economics</span>
+                    <span class="reader-chapter-mobile__chapter"><!----> </span> 
+                    <span class="reader-chapter-mobile__title"><!----></span>
                   </div>
                 </div>
               </div> 
               <button class="reader-audio-player-mobile__button">
-                <!-- <div class="reader-audio-player-mobile__arrow"></div> -->
-                <div class="reader-audio-player-mobile__play"> </div>
+                <div id="reader-audio-play-button" class="reader-audio-player-mobile__arrow"></div>
               </button>
             </div>
-            <div class="reader-audio-player-mobile__audio-wrapper" style="">
+            <div class="reader-audio-player-mobile__audio-wrapper">
               <div class="audio-progress reader-audio-player-mobile__progress">
                 <div class="audio-progress__element audio-progress__element--time">
                   <div class="audio-progress__remaining-time">0:00 </div>
@@ -364,7 +234,7 @@
                   </div>
                 </div>
                 <div class="audio-progress__element audio-progress__element--total">
-                  <div class="audio-progress__total-time">1:39 </div>
+                  <div class="audio-progress__total-time"><!----> </div>
                 </div>
               </div>
               <div class="audio-controls reader-audio-player-mobile__controls">
@@ -376,7 +246,7 @@
                 <div class="audio-controls__wrapper">
                   <button class="audio-controls__previous"></button>
                   <button class="audio-controls__back"></button>
-                  <button class="audio-controls__play"></button>
+                  <button id="audio-controls-play-button" class="audio-controls__play"></button>
                   <button class="audio-controls__forward"></button>
                   <button class="audio-controls__next"></button>
                 </div>
@@ -387,5 +257,6 @@
       </div>
     </div>
   </div>
+  <script src="mobile.js"></script>
 </body>
 </html>
