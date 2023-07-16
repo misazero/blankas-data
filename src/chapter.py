@@ -10,6 +10,7 @@ class Chapter:
 
         # pylint: disable=C0103
         self.id = chapter_data["id"]
+        self.order_no = chapter_data["order_no"]
 
     @staticmethod
     def from_id(book, chapter_id) -> "Chapter":
