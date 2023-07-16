@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 
 from tqdm import tqdm
@@ -112,6 +113,8 @@ def scrap_en_books(download_audio=False, limit=None):
                 s3_url = download_from_s3(filename, upload_to)
                 chapter.data["s3_url"] = s3_url
                 chapters_data.append(chapter.data)
+                if os.path.exists(filepath):
+                    os.remove(filepath)
             book_data["meta"]["chapters"] = chapters_data
 
         json.dump(book_data, open(f"{upload_to}/book.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
