@@ -176,3 +176,6 @@ cython_debug/
 bookdata/
 analyze.ipynb
 landing.css
+
+.DS_Store
+.vscode/
