@@ -1,7 +1,7 @@
 import os
 import urllib.parse
 
-import requests
+from .utils import scraper
 
 from . import settings
 
@@ -33,7 +33,7 @@ class BackblazeNaiveAPI(metaclass=SingletonMeta):
     def b2_authorize(self, raise_exception=True):
         url = os.path.join(settings.BACKBLAZE_API_HOST,
                            "b2api/v2/b2_authorize_account")
-        response = requests.get(url, auth=(
+        response = scraper.get(url, auth=(
             settings.BACKBLAZE_KEY_ID, settings.BACKBLAZE_KEY_PRIVATE))
         if response.status_code == 200:
             response_obj = response.json()
@@ -53,10 +53,10 @@ class BackblazeNaiveAPI(metaclass=SingletonMeta):
             url_params = urllib.parse.urlencode(
                 kwargs, quote_via=urllib.parse.quote)
             headers = {"Authorization": self.AUTH_TOKEN}
-            response = requests.get(f"{url}?{url_params}", headers=headers)
+            response = scraper.get(f"{url}?{url_params}", headers=headers)
             if response.status_code == 401:
                 self.b2_authorize(raise_exception=raise_exception)
-                response = requests.get(f"{url}?{url_params}", headers=headers)
+                response = scraper.get(f"{url}?{url_params}", headers=headers)
             if response.status_code == 401 and raise_exception:
                 raise Exception("Can not authorize B2")
             if response.status_code == 200:
