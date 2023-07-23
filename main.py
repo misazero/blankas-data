@@ -9,7 +9,7 @@ from src.backblaze import BackblazeNaiveAPI
 from src.book import Book
 from src.function import browsing
 from src.storage import download_from_s3, upload_to_s3
-from src.utils import request
+from src.utils import scraper
 
 
 def save_all_books():
@@ -166,7 +166,7 @@ def verify_backblaze_book_files():
         else:
             book_url = os.path.join(
                 "https://", settings.BACKBLAZE_DOMAIN, book_path, "book.json")
-            response = request.get(book_url)
+            response = scraper.get(book_url)
             book_json = response.json()
             chapters_length = book_json["meta"]["chaptersLength"]
             miss_chapters = []
