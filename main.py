@@ -1,7 +1,6 @@
 import json
 import os
 from pathlib import Path
-import requests
 
 from tqdm import tqdm
 
@@ -9,7 +8,8 @@ from src import settings
 from src.backblaze import BackblazeNaiveAPI
 from src.book import Book
 from src.function import browsing
-from src.storage import upload_to_s3, download_from_s3
+from src.storage import download_from_s3, upload_to_s3
+from src.utils import request
 
 
 def save_all_books():
@@ -30,14 +30,17 @@ def save_all_books():
             if strategy_index > 0:
                 end = strategy_date[strategy_index - 1]
             start = timestamp
-            hits, total_page, current_page = browsing(page=page, publishedAt_start=start, publishedAt_end=end)
+            hits, total_page, current_page = browsing(
+                page=page, publishedAt_start=start, publishedAt_end=end)
             books += hits
             count += len(hits)
-            print(f"strategy: {strategy_index + 1} / {len(strategy_date)}, page: {page + 1} / {total_page}, hit: {count}")
+            print(
+                f"strategy: {strategy_index + 1} / {len(strategy_date)}, page: {page + 1} / {total_page}, hit: {count}")
             if total_page == (current_page + 1):
                 break
 
-    json.dump(books, open("bookdata/algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(books, open("bookdata/algolia_books.json", "w",
+              encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 def scrap_all_books():
@@ -72,17 +75,22 @@ def scrap_all_books():
         for chapter in book.chapters:
             chapter.download_audio(target_dir=book_dir)
 
-    json.dump(books_data, open("bookdata/books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    json.dump(error_data, open("bookdata/error_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    json.dump(cloudflare_error_data, open("bookdata/cloudflare_error_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(books_data, open("bookdata/books.json", "w",
+              encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(error_data, open("bookdata/error_algolia_books.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(cloudflare_error_data, open("bookdata/cloudflare_error_algolia_books.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 def scrap_en_books(download_audio=False, limit=None):
     error_data = []
     cloudflare_error_data = []
     # books_data = {}
-    backblaze_book_ids = json.load(open("bookdata/backblaze_book_ids.json", encoding="utf8"))
-    data = json.load(open("bookdata/algolia_books_by_lang.json", encoding="utf8"))["en"]
+    backblaze_book_ids = json.load(
+        open("bookdata/backblaze_book_ids.json", encoding="utf8"))
+    data = json.load(
+        open("bookdata/algolia_books_by_lang.json", encoding="utf8"))["en"]
     count_index = 0
     for key in tqdm(data):
         if key in backblaze_book_ids:
@@ -123,34 +131,42 @@ def scrap_en_books(download_audio=False, limit=None):
                     os.remove(filepath)
             book_data["meta"]["chapters"] = chapters_data
 
-        json.dump(book_data, open(f"{upload_to}/book.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+        json.dump(book_data, open(
+            f"{upload_to}/book.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
         filename = "book.json"
         filepath = f"{upload_to}/book.json"
         upload_to_s3(filepath, filename, upload_to)
-    json.dump(error_data, open("bookdata/error_en_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    json.dump(cloudflare_error_data, open("bookdata/cloudflare_error_en_algolia_books.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(error_data, open("bookdata/error_en_algolia_books.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(cloudflare_error_data, open("bookdata/cloudflare_error_en_algolia_books.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 def get_backblaze_data():
     backblaze_api = BackblazeNaiveAPI()
-    book_ids = backblaze_api.get_book_ids(prefix="bookdata/en/", raise_exception=True)
+    book_ids = backblaze_api.get_book_ids(
+        prefix="bookdata/en/", raise_exception=True)
     print(f"Number book uploaded: {len(book_ids)}")
-    json.dump(book_ids, open("bookdata/backblaze_book_ids.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(book_ids, open("bookdata/backblaze_book_ids.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 def verify_backblaze_book_files():
     backblaze_api = BackblazeNaiveAPI()
-    backblaze_book_ids = json.load(open("bookdata/backblaze_book_ids.json", encoding="utf8"))
+    backblaze_book_ids = json.load(
+        open("bookdata/backblaze_book_ids.json", encoding="utf8"))
     miss_book = {}
     miss_chapter = {}
     completed = {}
     for book_id, book_path in tqdm(backblaze_book_ids.items()):
-        book, chapters = backblaze_api.get_book_files(prefix=book_path, raise_exception=True)
+        book, chapters = backblaze_api.get_book_files(
+            prefix=book_path, raise_exception=True)
         if book is None:
             miss_book[book_id] = book_path
         else:
-            book_url = os.path.join("https://", settings.BACKBLAZE_DOMAIN, book_path, "book.json")
-            response = requests.get(book_url)
+            book_url = os.path.join(
+                "https://", settings.BACKBLAZE_DOMAIN, book_path, "book.json")
+            response = request.get(book_url)
             book_json = response.json()
             chapters_length = book_json["meta"]["chaptersLength"]
             miss_chapters = []
@@ -165,10 +181,14 @@ def verify_backblaze_book_files():
                 }
             else:
                 completed[book_id] = book_json
-    print(f"Miss Book: {len(miss_book)}, Miss chapters: {len(miss_chapters)}, Completed: {len(completed)}")
-    json.dump(miss_book, open("bookdata/backblaze_miss_book_book_ids.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    json.dump(miss_chapters, open("bookdata/backblaze_miss_chapters_book_ids.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    json.dump(completed, open("bookdata/backblaze_completed_book_ids.json", "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    print(
+        f"Miss Book: {len(miss_book)}, Miss chapters: {len(miss_chapters)}, Completed: {len(completed)}")
+    json.dump(miss_book, open("bookdata/backblaze_miss_book_book_ids.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(miss_chapters, open("bookdata/backblaze_miss_chapters_book_ids.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
+    json.dump(completed, open("bookdata/backblaze_completed_book_ids.json",
+              "w", encoding="utf8"), indent=2, ensure_ascii=False)
 
 
 if __name__ == "__main__":
